@@ -84,7 +84,7 @@ function Login() {
         </form>
         <div className="login-reminder  flex items-center justify-between ">
           <Link
-            to="/login"
+            to="/Register"
             className="btn-primary mt-4 w-[2] py-3 px-4 rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600"
           >
              Register Now

@@ -2,8 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const EmployeeModel = require("./models/Employee");
+const UserModel = require("./models/User");
 
+const PORT = process.env.PORT || 5001;
 // Create an Express app instance
 const app = express();
 app.use(express.json()); // Middleware to parse JSON requests
@@ -33,13 +34,13 @@ app.post("/register", async (req, res) => {
      const { firstName, lastName, email, password } = req.body;
  
      // Check if the user already exists in the database
-     const existingUser = await EmployeeModel.findOne({ email });
+     const existingUser = await UserModel.findOne({ email });
      if (existingUser) {
        return res.status(400).json({ message: "User already exists" });
      }
  
      // Create a new user object
-     const newUser = new EmployeeModel({ firstName, lastName, email, password });
+     const newUser = new UserModel({ firstName, lastName, email, password });
  
      // Save the user to the database
      await newUser.save();
@@ -52,8 +53,7 @@ app.post("/register", async (req, res) => {
    }
  });
  
-// Start the server
-const PORT = process.env.PORT || 5001;
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
