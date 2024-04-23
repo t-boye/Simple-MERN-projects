@@ -11,7 +11,6 @@ const APIService = {
         `https://api.openweathermap.org/data/2.5/weather?q={Alabama}&appid={2083bb43493ab42b65516b9576afe6ef}`
       );
 
-      //api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily&appid=${API_KEY}
       https: return {
         city: response.data.timezone.split("/")[1],
         temperature: response.data.current.temp,
